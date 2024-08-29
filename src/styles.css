@@ -52,6 +52,7 @@ h4,
 h5,
 h6 {
   overflow-wrap: break-word;
+  font-family: 'Gambarino', sans-serif;
 }
 /*
     8. Create a root stacking context
@@ -62,3 +63,56 @@ h6 {
 }
 
 /* General CSS */
+
+@font-face {
+  font-family: 'Gambarino';
+  src: url(./fonts/Gambarino-Regular.woff2) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#display {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid black;
+  padding: 50px;
+
+  background-color: rgb(221, 221, 221);
+
+  height: 65%;
+  width: 30%;
+}
+
+#display > h1 {
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+#conditions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#heatData {
+  display: flex;
+  justify-content: space-between;
+}
+
+#temperature {
+  display: flex;
+  gap: 10px;
+}
+
+#description {
+  text-align: center;
+}
