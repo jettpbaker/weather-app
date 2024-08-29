@@ -1,3 +1,6 @@
 import './styles.css';
+import getCleanedWeatherData from './data';
 
-console.log('Hello World!');
+// const weatherData = getCleanedWeatherData('Brisbane').then((value) => {
+//   console.log(value);
+// });
