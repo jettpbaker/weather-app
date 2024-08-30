@@ -71,6 +71,10 @@ h6 {
   font-style: normal;
 }
 
+.hidden {
+  display: none !important;
+}
+
 body {
   display: flex;
   justify-content: center;
@@ -115,4 +119,10 @@ body {
 
 #description {
   text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+  gap: 2%;
 }

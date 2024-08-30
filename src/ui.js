@@ -46,21 +46,86 @@ const images = {
   wind,
 };
 
+let weatherDataCopy;
+
+let currentTempUnit = 'Celsius';
+
+const changeTempUnit = document.querySelector('#temperature > button');
+changeTempUnit.addEventListener('click', toggleTempUnit);
+
+function toggleHiddenClass() {
+  const elementsToToggle = document.querySelectorAll('.hidden');
+
+  elementsToToggle.forEach((element) => {
+    element.classList.toggle('hidden');
+  });
+}
+
+function changeCondition(data) {
+  const { conditions } = data;
+  const condition = document.querySelector('#condition');
+  condition.textContent = conditions;
+}
+
+function changeIcon(data) {
+  const { icon } = data;
+  console.log(icon);
+  const imageContainer = document.querySelector('#conditions > img');
+
+  imageContainer.src = images[icon];
+  imageContainer.alt = icon;
+}
+
+function changeTemperature(data) {
+  let { temperature } = data;
+
+  if (currentTempUnit === 'Fahrenheit') {
+    temperature = (temperature * 9) / 5 + 32;
+  }
+
+  console.log(temperature);
+
+  const temperatureContainer = document.querySelector('#temperature > h2');
+  temperatureContainer.textContent = temperature;
+}
+
+function changeUVIndex(data) {
+  const { uvIndex } = data;
+  const uvIndexContainer = document.querySelector('#uvIndex');
+  uvIndexContainer.textContent = uvIndex;
+}
+
+function changeDescription(data) {
+  const { description } = data;
+  const descriptionContainer = document.querySelector('#description');
+  descriptionContainer.textContent = description;
+}
+
 function updateUI(weatherData) {
-  const changeCondition = (function () {
-    const { conditions } = weatherData;
-    const condition = document.querySelector('#condition');
-    condition.textContent = conditions;
-  })();
+  if (!weatherData) {
+    return;
+  }
+  toggleHiddenClass();
+  changeCondition(weatherData);
+  changeIcon(weatherData);
+  changeTemperature(weatherData);
 
-  const changeIcon = (function () {
-    const { icon } = weatherData;
-    console.log(icon);
-    const imageContainer = document.querySelector('#conditions > img');
+  changeUVIndex(weatherData);
+  changeDescription(weatherData);
 
-    imageContainer.src = images[icon];
-    imageContainer.alt = icon;
-  })();
+  weatherDataCopy = weatherData;
+}
+
+function toggleTempUnit() {
+  if (currentTempUnit === 'Celsius') {
+    currentTempUnit = 'Fahrenheit';
+    changeTempUnit.textContent = '°F';
+  } else {
+    currentTempUnit = 'Celsius';
+    changeTempUnit.textContent = '°C';
+  }
+
+  changeTemperature(weatherDataCopy);
 }
 
 export default updateUI;
