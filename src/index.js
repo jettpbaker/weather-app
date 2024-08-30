@@ -14,3 +14,5 @@ document.querySelector('form').addEventListener('submit', (event) => {
     updateUI(weatherData);
   });
 });
+
+// Hello World
