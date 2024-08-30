@@ -6,7 +6,7 @@ let weatherData;
 
 document.querySelector('form').addEventListener('submit', (event) => {
   event.preventDefault();
-  const input = document.querySelector('input[type="text"]');
+  const input = document.querySelector('#search');
   const city = input.value;
   getCleanedWeatherData(city).then((value) => {
     console.log(value);
