@@ -125,4 +125,6 @@ form {
   display: flex;
   justify-content: center;
   gap: 2%;
+
+  width: 65%;
 }
